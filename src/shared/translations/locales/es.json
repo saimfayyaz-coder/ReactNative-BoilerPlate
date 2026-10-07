@@ -1,0 +1,98 @@
+{
+  "common": {
+    "welcome": "Bienvenido",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "logout": "Cerrar sesión",
+    "loading": "Cargando...",
+    "error": "Error",
+    "errorNetwork": "Sin conexión a internet. Por favor verifique su red.",
+    "errorTimeout": "Tiempo de espera agotado. Por favor intente de nuevo.",
+    "errorServer": "Algo salió mal por nuestra parte. Por favor intente más tarde.",
+    "errorUnknown": "Algo salió mal. Por favor intente de nuevo.",
+    "tryAgain": "Intentar de nuevo",
+    "show": "Mostrar",
+    "hide": "Ocultar",
+    "back": "Atrás"
+  },
+  "auth": {
+    "login": "Iniciar sesión",
+    "loginSubtitle": "Plantilla de React Native",
+    "signup": "Registrarse",
+    "signupSubtitle": "Crea una cuenta para comenzar",
+    "name": "Nombre completo",
+    "namePlaceholder": "Ingresa tu nombre completo",
+    "email": "Correo electrónico",
+    "emailPlaceholder": "Ingresa tu correo",
+    "password": "Contraseña",
+    "passwordPlaceholder": "Ingresa tu contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "confirmPasswordPlaceholder": "Confirma tu contraseña",
+    "dontHaveAccount": "¿No tienes una cuenta?",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "otpTitle": "Código de verificación",
+    "otpSubtitle": "Ingresa el código enviado a",
+    "verify": "Verificar",
+    "verification": "Verificación",
+    "resend": "Reenviar código",
+    "resendIn": "Reenviar código en",
+    "invalidCode": "Código de verificación inválido. Prueba 123456"
+  },
+  "home": {
+    "title": "Inicio",
+    "empty": "No se encontraron publicaciones",
+    "refresh": "Desliza para actualizar",
+    "loadFailed": "Error al cargar las publicaciones de la API"
+  },
+  "profile": {
+    "title": "Perfil",
+    "editTitle": "Editar Perfil",
+    "name": "Nombre Completo",
+    "namePlaceholder": "Ingresa tu nombre",
+    "bio": "Biografía",
+    "bioPlaceholder": "Cuéntanos sobre ti",
+    "save": "Guardar Cambios",
+    "defaultUser": "Perfil de Usuario"
+  },
+  "settings": {
+    "title": "Ajustes",
+    "theme": "Modo de tema",
+    "language": "Idioma",
+    "light": "Claro",
+    "dark": "Oscuro",
+    "system": "Sistema"
+  },
+  "validation": {
+    "emailRequired": "El correo es requerido",
+    "emailInvalid": "Dirección de correo inválida",
+    "passwordRequired": "La contraseña es requerida",
+    "passwordMinLength": "La contraseña debe tener al menos 6 caracteres",
+    "nameRequired": "El nombre es requerido",
+    "nameMinLength": "El nombre debe tener al menos 2 caracteres",
+    "confirmPasswordRequired": "Por favor confirma tu contraseña",
+    "passwordsDoNotMatch": "Las contraseñas no coinciden"
+  },
+  "errors": {
+    "INVALID_CREDENTIALS": "Correo o contraseña incorrectos.",
+    "INCORRECT_PASSWORD": "Contraseña incorrecta.",
+    "EMAIL_ALREADY_EXISTS": "Ya existe una cuenta con este correo.",
+    "USERNAME_ALREADY_EXISTS": "Este nombre de usuario ya está en uso.",
+    "USER_NOT_FOUND": "No se encontró ninguna cuenta con este correo.",
+    "INVALID_OTP": "Código de confirmación incorrecto. Verifique e intente nuevamente.",
+    "OTP_EXPIRED": "El código de confirmación ha expirado. Solicite un nuevo código.",
+    "EMAIL_NOT_VERIFIED": "Su correo no está verificado. Por favor revise su correo.",
+    "TOKEN_REQUIRED": "Autenticación requerida. Por favor inicie sesión.",
+    "TOKEN_EXPIRED": "Su sesión ha expirado. Por favor inicie sesión nuevamente.",
+    "TOKEN_INVALID": "Sesión inválida. Por favor inicie sesión nuevamente.",
+    "REFRESH_TOKEN_REQUIRED": "Falta el token de sesión. Por favor inicie sesión de nuevo.",
+    "REFRESH_TOKEN_INVALID": "Token de sesión inválido. Por favor inicie sesión de nuevo.",
+    "REFRESH_TOKEN_EXPIRED": "Su sesión ha expirado. Por favor inicie sesión de nuevo.",
+    "SERVER_ERROR": "Algo salió mal por nuestra parte. Por favor intente más tarde.",
+    "NETWORK_ERROR": "Sin conexión a internet. Por favor verifique su red.",
+    "TIMEOUT_ERROR": "Tiempo de espera agotado. Por favor intente de nuevo.",
+    "FORBIDDEN": "No tienes permiso para realizar esta acción.",
+    "VALIDATION_FAILED": "Por favor verifique los campos marcados a continuación.",
+    "UNKNOWN": "Ocurrió un error inesperado. Por favor intente de nuevo."
+  }
+}
+

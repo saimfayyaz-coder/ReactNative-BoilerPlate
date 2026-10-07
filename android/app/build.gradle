@@ -2,6 +2,17 @@ apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
 
+project.ext.envConfigFiles = [
+    devdebug: ".env.development",
+    devrelease: ".env.development",
+    stagedebug: ".env.staging",
+    stagerelease: ".env.staging",
+    proddebug: ".env.production",
+    prodrelease: ".env.production"
+]
+
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+
 /**
  * This is the configuration block to customize your React Native Android app.
  * By default you don't need to apply any configuration, just uncomment the lines you need.
@@ -85,6 +96,26 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    flavorDimensions "default"
+    productFlavors {
+        dev {
+            dimension "default"
+            applicationIdSuffix ".dev"
+            resValue "string", "app_name", "Boilerplate Dev"
+            resValue "string", "build_config_package", "com.boilerplateapp"
+        }
+        stage {
+            dimension "default"
+            applicationIdSuffix ".stage"
+            resValue "string", "app_name", "Boilerplate Stage"
+            resValue "string", "build_config_package", "com.boilerplateapp"
+        }
+        prod {
+            dimension "default"
+            resValue "string", "app_name", "Boilerplate"
+            resValue "string", "build_config_package", "com.boilerplateapp"
+        }
+    }
     signingConfigs {
         debug {
             storeFile file('debug.keystore')
@@ -117,3 +148,7 @@ dependencies {
         implementation jscFlavor
     }
 }
+
+apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle");
+apply plugin: "com.google.gms.google-services"
+

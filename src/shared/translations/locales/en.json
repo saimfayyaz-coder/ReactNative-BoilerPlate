@@ -1,0 +1,98 @@
+{
+  "common": {
+    "welcome": "Welcome",
+    "save": "Save",
+    "cancel": "Cancel",
+    "logout": "Log Out",
+    "loading": "Loading...",
+    "error": "Error",
+    "errorNetwork": "No internet connection. Please check your network.",
+    "errorTimeout": "Request timed out. Please try again.",
+    "errorServer": "Something went wrong on our end. Please try again later.",
+    "errorUnknown": "Something went wrong. Please try again.",
+    "tryAgain": "Try Again",
+    "show": "Show",
+    "hide": "Hide",
+    "back": "Back"
+  },
+  "auth": {
+    "login": "Log In",
+    "loginSubtitle": "React Native Boilerplate",
+    "signup": "Sign Up",
+    "signupSubtitle": "Create an account to get started",
+    "name": "Full Name",
+    "namePlaceholder": "Enter your full name",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordPlaceholder": "Re-enter your password",
+    "dontHaveAccount": "Don't have an account?",
+    "alreadyHaveAccount": "Already have an account?",
+    "otpTitle": "Verification Code",
+    "otpSubtitle": "Enter the code sent to",
+    "verify": "Verify",
+    "verification": "Verification",
+    "resend": "Resend Code",
+    "resendIn": "Resend code in",
+    "invalidCode": "Invalid verification code. Try 123456"
+  },
+  "home": {
+    "title": "Home Feed",
+    "empty": "No posts found",
+    "refresh": "Pull down to refresh",
+    "loadFailed": "Failed to load posts from API"
+  },
+  "profile": {
+    "title": "Profile",
+    "editTitle": "Edit Profile",
+    "name": "Full Name",
+    "namePlaceholder": "Enter your name",
+    "bio": "Bio",
+    "bioPlaceholder": "Tell us about yourself",
+    "save": "Save Changes",
+    "defaultUser": "User Profile"
+  },
+  "settings": {
+    "title": "Settings",
+    "theme": "Theme Mode",
+    "language": "Language",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "validation": {
+    "emailRequired": "Email is required",
+    "emailInvalid": "Invalid email address",
+    "passwordRequired": "Password is required",
+    "passwordMinLength": "Password must be at least 6 characters",
+    "nameRequired": "Name is required",
+    "nameMinLength": "Name must be at least 2 characters",
+    "confirmPasswordRequired": "Please confirm your password",
+    "passwordsDoNotMatch": "Passwords do not match"
+  },
+  "errors": {
+    "INVALID_CREDENTIALS": "Invalid email or password.",
+    "INCORRECT_PASSWORD": "Incorrect password.",
+    "EMAIL_ALREADY_EXISTS": "An account with this email already exists.",
+    "USERNAME_ALREADY_EXISTS": "This username is already taken.",
+    "USER_NOT_FOUND": "No account found with this email.",
+    "INVALID_OTP": "Incorrect confirmation code. Please check and try again.",
+    "OTP_EXPIRED": "Confirmation code has expired. Please request a new code.",
+    "EMAIL_NOT_VERIFIED": "Your email is not verified. Please check your email for the confirmation code.",
+    "TOKEN_REQUIRED": "Authentication required. Please log in.",
+    "TOKEN_EXPIRED": "Your session has expired. Please log in again.",
+    "TOKEN_INVALID": "Invalid session. Please log in again.",
+    "REFRESH_TOKEN_REQUIRED": "Session token missing. Please log in again.",
+    "REFRESH_TOKEN_INVALID": "Invalid session token. Please log in again.",
+    "REFRESH_TOKEN_EXPIRED": "Your session has expired. Please log in again.",
+    "SERVER_ERROR": "Something went wrong on our end. Please try again later.",
+    "NETWORK_ERROR": "No internet connection. Please check your network.",
+    "TIMEOUT_ERROR": "Request timed out. Please try again.",
+    "FORBIDDEN": "You do not have permission to perform this action.",
+    "VALIDATION_FAILED": "Please check the highlighted fields below.",
+    "UNKNOWN": "An unexpected error occurred. Please try again."
+  }
+}
+
