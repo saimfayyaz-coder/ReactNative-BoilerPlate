@@ -98,5 +98,4 @@ npm run ios
 ## 📖 In-Depth Engineering Documentation
 
 For the comprehensive 20-page architecture playbook, component decision trees, and trainee onboarding guides, refer to:
-- **Playbook Word Edition:** [`docs/newdoc/Architecture_Playbook.docx`](file:///d:/InstagramClone/docs/newdoc/Architecture_Playbook.docx)
-- **Theme Guidelines:** [`docs/newdoc/theme.md`](file:///d:/InstagramClone/docs/newdoc/theme.md)
+- **Playbook Word Edition:** [`docs/Architecture_Playbook.docx`]
