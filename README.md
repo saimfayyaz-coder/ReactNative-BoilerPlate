@@ -1,97 +1,102 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 🚀 React Native Boilerplate
 
-# Getting Started
+A production-grade, highly scalable React Native architecture designed for enterprise teams. Built with **Domain-Driven Screen Design**, **RTK Query** with concurrency mutex refresh, **Hardware Keychain** encryption, **MMKV** persistence, and native **Multi-Flavoring**.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+---
 
-## Step 1: Start Metro
+## 🏛️ The 5-Layer Architecture
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+The application source (`src/`) strictly partitions code into 5 layers:
 
-To start the Metro dev server, run the following command from the root of your React Native project:
-
-```sh
-# Using npm
-npm start
-
-# OR using Yarn
-yarn start
+```
+src/
+├── providers/     # Root context wrappers (Redux, Theme, Gestures, Safe Area) & App.tsx
+├── navigation/    # Declarative stacks (root/, auth/, main/), types.ts, navigationService.ts
+├── screens/       # Domain-driven screens (auth/, profile/, home/, settings/, common/)
+├── store/         # State machine (api/ with mutex refresh, storage/, slices/, middlewares/)
+└── shared/        # Universal primitives (atoms/, molecules/, widgets/, layouts/, theme/, utils/)
 ```
 
-## Step 2: Build and run your app
+### Core Architectural Principles
+1. **The Thin Screen Principle:** Screens are lightweight composition shells. All local state, Zod validation, and RTK Query mutations are extracted into dedicated page hooks (`<screen>/hooks/useLogin.ts`).
+2. **Domain Screen Grouping & Anti-Crowding:**
+   - **Page-Only Components:** Live in `screens/<domain>/<page>/components/`.
+   - **Domain-Shared Components:** Live in `screens/<domain>/components/` (e.g. `ProfileAvatar.tsx` shared by `main` and `edit`).
+   - **Global Primitives:** Pure design tokens and primitives live in `shared/`.
+3. **Mandatory Layout Wrappers:** Raw `<View>` is prohibited as a screen root. Every screen is wrapped in:
+   - `ScreenWrapper`: Enforces hardware insets (notches, dynamic islands) and status bar theming.
+   - `KeyboardScreenWrapper`: Smooth software keyboard avoidance via `react-native-keyboard-controller`.
+4. **Decoupled Multi-Screen Widgets:** Flows appearing across multiple screens (e.g. `OtpVerificationWidget`) are self-contained widgets communicating strictly via callbacks (`onSuccess`, `onCancel`).
+5. **Strict Constants Enforcement:** No raw magic strings. All routes (`AUTH_ROUTES`), storage keys (`STORAGE_KEYS`), and icons (`APP_ICONS`) use typed constants.
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+---
 
-### Android
+## ⚡ Tech Stack
 
-```sh
-# Using npm
-npm run android
+| Domain | Selected Technology | Purpose |
+| :--- | :--- | :--- |
+| **State & Caching** | `@reduxjs/toolkit` (RTK Query) + `redux-persist` | Declarative server caching, request deduplication, offline persistence |
+| **Storage** | `react-native-mmkv` + `react-native-keychain` | C++ mmap storage (~30x faster) + Hardware Secure Enclave for JWTs |
+| **Navigation** | `@react-navigation/native-stack` + `bottom-tabs` | Native platform view transitions (60/120 FPS) |
+| **Responsive Layout** | `react-native-size-matters` (`ms`, `scale`, `vs`) | Viewport scaling algorithm (`factor = 0.3`) for small phones & tablets |
+| **Vector Glyphs** | `react-native-vector-icons` (Ionicons) | Native font vector rendering with zero pixelation |
+| **Keyboard & Polish** | `react-native-keyboard-controller` + `bootsplash` | Frame-by-frame interactive keyboard tracking & splash synchronization |
+| **Validation & Env** | `zod` + `react-native-config` | Runtime contract validation & native build variant binding |
 
-# OR using Yarn
-yarn android
+---
+
+## 🏁 Getting Started
+
+### 1. Prerequisites
+- Node.js `>= 22.11.0`
+- React Native CLI & Android SDK / Xcode
+
+### 2. Install Dependencies
+```bash
+npm install
 ```
 
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
+### 3. Configure Environment Variables
+Copy the environment template:
+```bash
+cp .env.example .env.development
 ```
 
-Then, and every time you update your native dependencies, run:
+---
 
-```sh
-bundle exec pod install
-```
+## 📱 Multi-Flavor Running & Building
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+The project supports isolated native product flavors (`dev`, `stage`, `prod`) with independent Application IDs and configurations:
 
-```sh
-# Using npm
+```bash
+# Run Debug Variants
+npm run android:dev      # Target: Local / Sandbox (com.boilerplateapp.dev)
+npm run android:stage    # Target: QA / Staging (com.boilerplateapp.stage)
+npm run android:prod     # Target: Production (com.boilerplateapp)
+
+# Generate Release APKs
+npm run build:android:dev
+npm run build:android:stage
+npm run build:android:prod
+
+# Generate Production Google Play Bundle (AAB)
+npm run bundle:android:prod
+
+# iOS
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+---
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+## 🔐 Security & Git Rules
+- **Environment:** `.env*` files are strictly ignored; commit `.env.example` only.
+- **Keystores:** Custom release keystores are ignored; `debug.keystore` is whitelisted for local dev.
+- **Google Services:** `google-services.json` is ignored; tracked via `.example` mockup schemas.
 
-## Step 3: Modify your app
+---
 
-Now that you have successfully run the app, let's make changes!
+## 📖 In-Depth Engineering Documentation
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+For the comprehensive 20-page architecture playbook, component decision trees, and trainee onboarding guides, refer to:
+- **Playbook Word Edition:** [`docs/newdoc/Architecture_Playbook.docx`](file:///d:/InstagramClone/docs/newdoc/Architecture_Playbook.docx)
+- **Theme Guidelines:** [`docs/newdoc/theme.md`](file:///d:/InstagramClone/docs/newdoc/theme.md)
